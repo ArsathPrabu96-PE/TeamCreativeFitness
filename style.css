@@ -146,7 +146,21 @@ h1, h2, h3 {
 }
 
 .logo {
-    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-image {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #C99A35;
+}
+
+.logo-text {
+    font-size: 20px;
     font-weight: 700;
     color: #FFFFFF;
     font-family: 'Montserrat', sans-serif;
@@ -935,11 +949,19 @@ footer {
 }
 
 .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 24px;
     font-weight: 700;
     color: #C99A35;
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 1px;
+}
+
+.footer-logo .logo-image {
+    height: 30px;
+    width: 30px;
 }
 
 .footer-links a {
@@ -1028,6 +1050,19 @@ footer {
         display: flex;
     }
 
+    .logo {
+        gap: 8px;
+    }
+
+    .logo-image {
+        height: 35px;
+        width: 35px;
+    }
+
+    .logo-text {
+        font-size: 18px;
+    }
+
     .hero h1 {
         font-size: 36px;
     }
@@ -1079,6 +1114,15 @@ footer {
 
     .footer-content {
         grid-template-columns: 1fr;
+    }
+
+    .footer-logo {
+        gap: 8px;
+    }
+
+    .footer-logo .logo-image {
+        height: 25px;
+        width: 25px;
     }
 
     .scroll-indicator {
