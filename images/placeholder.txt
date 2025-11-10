@@ -1,0 +1,15 @@
+Placeholder for images:
+
+- gym-hero.jpg: Hero background image of a CrossFit gym
+- trainer-icon.png: Icon for expert trainers
+- community-icon.png: Icon for community workouts
+- equipment-icon.png: Icon for modern equipment
+- wod-class.jpg: Image for WOD class
+- strength-class.jpg: Image for Strength class
+- mobility-class.jpg: Image for Mobility class
+- beginner-class.jpg: Image for Beginner class
+- trainer1.jpg: Photo of trainer John Smith
+- trainer2.jpg: Photo of trainer Sarah Johnson
+- trainer3.jpg: Photo of trainer Mike Davis
+
+Note: Replace these placeholder references with actual image files when available.
