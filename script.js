@@ -135,25 +135,49 @@ const sections = [
 ];
 
 let currentImageIndices = sections.map(() => 0);
+let backgroundInterval;
 
 function changeBackgroundImages() {
     sections.forEach((section, index) => {
         const sectionElement = document.getElementById(section.id);
-        if (sectionElement) {
+        if (sectionElement && document.visibilityState === 'visible') {
             currentImageIndices[index] = (currentImageIndices[index] + 1) % section.images.length;
             sectionElement.style.backgroundImage = `url('${section.images[currentImageIndices[index]]}')`;
         }
     });
 }
 
-// Change background images every 5 seconds
-setInterval(changeBackgroundImages, 5000);
+function startBackgroundRotation() {
+    if (backgroundInterval) {
+        clearInterval(backgroundInterval);
+    }
+    backgroundInterval = setInterval(changeBackgroundImages, 5000);
+}
+
+function stopBackgroundRotation() {
+    if (backgroundInterval) {
+        clearInterval(backgroundInterval);
+        backgroundInterval = null;
+    }
+}
 
 // Initialize with first images
 sections.forEach((section, index) => {
     const sectionElement = document.getElementById(section.id);
     if (sectionElement) {
         sectionElement.style.backgroundImage = `url('${section.images[0]}')`;
+    }
+});
+
+// Start background rotation
+startBackgroundRotation();
+
+// Handle page visibility changes
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+        startBackgroundRotation();
+    } else {
+        stopBackgroundRotation();
     }
 });
 
@@ -166,19 +190,34 @@ window.addEventListener('load', () => {
     }, 2000);
 });
 
+// Prevent autoplay issues by handling visibility changes
+document.addEventListener('visibilitychange', () => {
+    // Handle page visibility changes to prevent media errors
+    if (document.hidden) {
+        // Page is hidden, pause any ongoing animations or media
+    } else {
+        // Page is visible again
+    }
+});
+
 // Counter animation for stats and achievements
 function animateCounter(element, target) {
     let current = 0;
     const increment = target / 100;
-    const timer = setInterval(() => {
+    let animationId;
+
+    function updateCounter() {
         current += increment;
         if (current >= target) {
             element.textContent = target;
-            clearInterval(timer);
+            cancelAnimationFrame(animationId);
         } else {
             element.textContent = Math.floor(current);
+            animationId = requestAnimationFrame(updateCounter);
         }
-    }, 20);
+    }
+
+    animationId = requestAnimationFrame(updateCounter);
 }
 
 // Intersection Observer for counter animation
@@ -188,12 +227,15 @@ const counterObserver = new IntersectionObserver((entries) => {
             const counters = entry.target.querySelectorAll('.stat-number, .achievement-number');
             counters.forEach(counter => {
                 const target = parseInt(counter.getAttribute('data-target'));
-                animateCounter(counter, target);
+                // Add a small delay to prevent rapid firing
+                setTimeout(() => {
+                    animateCounter(counter, target);
+                }, 100);
             });
             counterObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.5 });
+}, { threshold: 0.5, rootMargin: '0px 0px -50px 0px' });
 
 // Observe hero and about sections for counter animation
 counterObserver.observe(document.querySelector('.hero'));
