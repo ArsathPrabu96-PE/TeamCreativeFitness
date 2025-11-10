@@ -157,6 +157,48 @@ sections.forEach((section, index) => {
     }
 });
 
+// Preloader functionality
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    setTimeout(() => {
+        preloader.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }, 2000);
+});
+
+// Counter animation for stats and achievements
+function animateCounter(element, target) {
+    let current = 0;
+    const increment = target / 100;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, 20);
+}
+
+// Intersection Observer for counter animation
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const counters = entry.target.querySelectorAll('.stat-number, .achievement-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                animateCounter(counter, target);
+            });
+            counterObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+// Observe hero and about sections for counter animation
+counterObserver.observe(document.querySelector('.hero'));
+counterObserver.observe(document.querySelector('.about'));
+
 // Navbar background change on scroll
 window.addEventListener('scroll', () => {
     const navbar = document.getElementById('navbar');

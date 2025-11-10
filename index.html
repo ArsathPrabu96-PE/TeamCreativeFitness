@@ -8,6 +8,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="logo-animation">TCF</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p>Loading...</p>
+        </div>
+    </div>
     <!-- Navbar -->
     <nav id="navbar">
         <div class="container">
@@ -32,11 +42,31 @@
     <!-- Hero Section -->
     <section id="home" class="hero" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
         <div class="hero-content">
-            <h1>Train Hard. Create Strong.</h1>
+            <h1>Train Hard. <span class="highlight-text">Create Strong.</span></h1>
             <p>Join Team Creative Fitness today</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-target="500">0</span>
+                    <span class="stat-label">Members</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="50">0</span>
+                    <span class="stat-label">Classes/Week</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="10">0</span>
+                    <span class="stat-label">Expert Trainers</span>
+                </div>
+            </div>
             <div class="hero-buttons">
                 <a href="#contact" class="btn primary">Book Free Trial</a>
                 <a href="#classes" class="btn secondary">View Schedule</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
             </div>
         </div>
     </section>
@@ -45,7 +75,28 @@
     <section id="about" class="about">
         <div class="container">
             <h2>About Us</h2>
-            <p>Team Creative Fitness is dedicated to building strength, improving endurance, and fostering a community of fitness enthusiasts. Our mission is to provide a supportive environment where everyone can achieve their fitness goals through CrossFit with purpose.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Team Creative Fitness is dedicated to building strength, improving endurance, and fostering a community of fitness enthusiasts. Our mission is to provide a supportive environment where everyone can achieve their fitness goals through CrossFit with purpose.</p>
+                    <div class="achievements">
+                        <div class="achievement">
+                            <span class="achievement-number" data-target="5">0</span>
+                            <span class="achievement-label">Years Experience</span>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-number" data-target="1000">0</span>
+                            <span class="achievement-label">Happy Members</span>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-number" data-target="25">0</span>
+                            <span class="achievement-label">Awards Won</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team Creative Fitness Gym">
+                </div>
+            </div>
             <div class="features">
                 <div class="feature">
                     <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Expert Trainers">
